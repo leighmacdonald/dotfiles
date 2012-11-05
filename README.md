@@ -11,6 +11,8 @@ Default Relevant Software I Use
 - Shell: [urxvt](http://software.schmorp.de/pkg/rxvt-unicode.html)
 - Document Viewer: [zathura](http://pwmt.org/projects/zathura/)
 - Browser: [Chromium](http://www.chromium.org/Home)
+- Text Editor: [vim](http://www.vim.org/)
+- IDE: [PyCharm](http://www.jetbrains.com/pycharm/) / [PHPStorm](http://www.jetbrains.com/phpstorm/)
 
 Integrations
 ------------------------------------------
@@ -23,7 +25,6 @@ There are several integrations and plugins to help with the following tools / li
 - [Python](http://python.org)
 - [virtualenv](https://github.com/pypa/virtualenv)
 - [git](https://github.com/git/git)
-
 
 
 Installation
