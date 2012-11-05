@@ -1,0 +1,14 @@
+GSSAPIAuthentication no
+
+Host fs
+    HostName cudd.li
+    Port 2
+    ControlMaster auto
+    ControlPath /tmp/ssh_mux_%h_%p_%r
+    User leigh
+    Ciphers arcfour
+
+Host jenkins
+    HostName 10.0.10.7
+    Port 22
+    User jenkins
