@@ -1,0 +1,11 @@
+[user]
+	name = leigh@cudd.li
+	email = leigh.macdonald@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	excludesfile = /home/leigh/.gitignore
+[push]
+	default = simple
