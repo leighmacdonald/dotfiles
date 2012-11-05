@@ -1,0 +1,12 @@
+# Write your default config options here!
+#font=/usr/share/fonts/TTF/impact.ttf
+ffactor="10" #black outline
+sub-bg-alpha="0" #background color ala closed captions
+sub-bg-color="0" #black to white
+subfont-outline=3.2 #font outline tickness
+subfont-text-scale="3.0" #truetype font scaling
+subfont-blur="1.1" #Slight blur
+#afm=hwac3
+cache=1024
+cache-min=4
+
