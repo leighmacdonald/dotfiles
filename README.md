@@ -2,7 +2,7 @@ dotfiles
 ============================
 
 My dotfiles repo built around zsh / awesome and zenburn. The shell and most shell (ncurses) apps are themed using
-the standard zenburn zenburn colouring scheme as defined in Xdefaults.
+the standard zenburn colouring scheme as defined in Xdefaults. The awesome configu
 
 Default Relevant Software I Use
 -----------------------------------
@@ -59,3 +59,20 @@ To customize to your liking there are several options that should be configured 
    ~/.config/awesome/themes. These are pulled from [awesome-themes](https://github.com/mikar/awesome-themes).
    To select a theme just update line 12 in ~/.config/awesome/rc.lua to point to the correct theme file.
 
+Important Awesome Keybindings
+----------------------------------
+
+Here are some of the most useful keybindings confiured in awesome. To get the full list you
+should look at the awesome/rc.lua file directory.
+
+- **mod4** Windows key ususally
+- **mod4 + Enter** Spawn terminal
+- **mod4 + r** Show run console in top awesome bar
+- **mod4 + h** Move window divider up/left
+- **mod4 + l** Move window divider down/right
+- **mod4 + j** Move focus counter-clockwise
+- **mod4 + k** Move focus clockwise
+- **mod4 + c** Close the currently focused window
+- **mod4 + f** (un)fullscreen the active window
+- **mod4 + shift + t** Show/Hide the application title bar
+- **mod4 + shift + f** Enable/Disable floating windows
