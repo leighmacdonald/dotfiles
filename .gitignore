@@ -34,3 +34,5 @@ nosetests.xml
 .project
 .pydevproject
 .idea
+ssh/id_dsa
+ssh/id_dsa.pub

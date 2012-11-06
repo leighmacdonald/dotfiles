@@ -67,7 +67,7 @@ should look at the awesome/rc.lua file directory.
 
 - **mod4** Windows key ususally
 - **mod4 + Enter** Spawn terminal
-- **mod4 + r** Show run console in top awesome bar
+- **mod4 + r** Run and focus command prompt
 - **mod4 + h** Move window divider up/left
 - **mod4 + l** Move window divider down/right
 - **mod4 + j** Move focus counter-clockwise

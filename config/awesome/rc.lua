@@ -47,9 +47,11 @@ layouts = {
 }
 -- }}}
 
+mypromptbox = {}
+
 tags = {}
-tags[1] = awful.tag({ "1", "2", "3" }, 1, layouts[2])
-tags[2] = awful.tag({ "4", "5", "6", "7" }, 2, layouts[2])
+tags[1] = awful.tag({ "code", "term", "watch" }, 1, layouts[2])
+tags[2] = awful.tag({ "www", "vm", "misc", "media" }, 2, layouts[2])
 -- {{{ Tags
 --tags = {
 --  names  = { "term", "emacs", "web", "mail", "im", 6, 7, "rss", "media" },
@@ -136,6 +138,7 @@ for _, w in pairs(fs) do
   w.widget:buttons(awful.util.table.join(
     awful.button({ }, 1, function () exec("rox", false) end)
   ))
+
 end -- Enable caching
 vicious.cache(vicious.widgets.fs)
 -- Register widgets
@@ -330,20 +333,12 @@ clientbuttons = awful.util.table.join(
 -- {{{ Global keys
 globalkeys = awful.util.table.join(
     -- {{{ Applications
-    awful.key({ modkey, }, "Return", function() awful.util.spawn(terminal) end),
     awful.key({ modkey }, "m", function () exec("mutt") end),
-    -- }}}
-
-    -- {{{ Prompt menus
-    awful.key({ modKey }, "r", function ()
-        awful.prompt.run({ prompt = "Run: " }, promptbox[mouse.screen].widget,
-            function (...) promptbox[mouse.screen].text = exec(unpack(arg), false) end,
-            awful.completion.shell, awful.util.getdir("cache") .. "/history")
-    end),
+    awful.key({ modkey, }, "Return", function() exec(terminal) end),
     -- }}}
 
     -- {{{ Awesome controls
-    awful.key({ modkey }, "b", function ()
+    awful.key({ modkey, }, "b", function ()
         wibox[mouse.screen].visible = not wibox[mouse.screen].visible
     end),
     awful.key({ modkey, "Shift" }, "q", awesome.quit),
@@ -353,25 +348,27 @@ globalkeys = awful.util.table.join(
     -- }}}
 
     -- {{{ Tag browsing
-    awful.key({ altkey }, "n",   awful.tag.viewnext),
-    awful.key({ altkey }, "p",   awful.tag.viewprev),
-    awful.key({ altkey }, "Tab", awful.tag.history.restore),
+    awful.key({ altkey, }, "n",   awful.tag.viewnext),
+    awful.key({ altkey, }, "p",   awful.tag.viewprev),
+    awful.key({ altkey, }, "Tab", awful.tag.history.restore),
     -- }}}
 
     -- {{{ Layout manipulation
-    awful.key({ modkey }, "l",          function () awful.tag.incmwfact( 0.05) end),
-    awful.key({ modkey }, "h",          function () awful.tag.incmwfact(-0.05) end),
+    awful.key({ modkey, }, "l",          function () awful.tag.incmwfact( 0.05) end),
+    awful.key({ modkey, }, "h",          function () awful.tag.incmwfact(-0.05) end),
     awful.key({ modkey, "Shift" }, "l", function () awful.client.incwfact(-0.05) end),
     awful.key({ modkey, "Shift" }, "h", function () awful.client.incwfact( 0.05) end),
     awful.key({ modkey, "Shift" }, "space", function () awful.layout.inc(layouts, -1) end),
-    awful.key({ modkey },          "space", function () awful.layout.inc(layouts,  1) end),
+    awful.key({ modkey, },          "space", function () awful.layout.inc(layouts,  1) end),
     -- }}}
 
+    awful.key({ modkey }, "r", function() promptbox[mouse.screen]:run() end),
+
     -- {{{ Focus controls
-    awful.key({ modkey }, "p", function () awful.screen.focus_relative(1) end),
-    awful.key({ modkey }, "s", function () scratch.pad.toggle() end),
-    awful.key({ modkey }, "u", awful.client.urgent.jumpto),
-    awful.key({ modkey }, "j", function ()
+    awful.key({ modkey, }, "p", function () awful.screen.focus_relative(1) end),
+    awful.key({ modkey, }, "s", function () scratch.pad.toggle() end),
+    awful.key({ modkey, }, "u", awful.client.urgent.jumpto),
+    awful.key({ modkey, }, "j", function ()
         awful.client.focus.byidx(1)
         if client.focus then client.focus:raise() end
     end),
