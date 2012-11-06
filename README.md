@@ -30,8 +30,14 @@ There are several integrations and plugins to help with the following tools / li
 Installation
 -----------------------------
 
+Tou must initialize the git submodules first
+
+    $ git pull
+    $ git submodule init
+    $ git submodule update
+
 There is a seperate python based tool called [dotupdate](https://github.com/leighmacdonald/dotupdate) to update
-your symlinks in your home direcrory, its recommended to use this tool for this process. Please referre to its
+your symlinks in your home directory, its recommended to use this tool for this process. Please referrer to its
 [README](https://github.com/leighmacdonald/dotupdate/blob/master/README.md) for installation procedures.
 
 
@@ -47,7 +53,7 @@ To customize to your liking there are several options that should be configured 
 
 2. If you wish to use a different $PS1 theme check out the zsh
    [themes](https://github.com/robbyrussell/oh-my-zsh/wiki/themes) available. Update your ~/.zshrc with the
-    theme name of your chosing to use it.
+    theme name of your choice to use it.
 
 3. Configure awesome to use the theme of your choice. The list of available themes can be found at
    ~/.config/awesome/themes. These are pulled from [awesome-themes](https://github.com/mikar/awesome-themes).
