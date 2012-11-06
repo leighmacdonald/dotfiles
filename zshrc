@@ -41,4 +41,4 @@ plugins=(git github composer pip python ssh-agent svn yum)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/home/leigh/.gem/ruby/1.9.1/bin:/usr/local/bin:/opt/komodo/bin:/opt/java/bin:/var/www/ppdmlib/vendor/bin:/opt/node/node-v0.8.9-linux-x64/bin:/opt/node/node-v0.8.9-linux-x64/bin/node_modules/coffee-script/bin/:/usr/local/bin:/opt/komodo/bin:/opt/java/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/home/leigh/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/leigh/code/bin:/usr/local/bin:/usr/lib64/qt4/bin:/home/leigh/bin:/home/leigh/code/bin:/usr/local/bin:/usr/lib64/qt4/bin
+export PATH=~/.bin:~/.gem/ruby/1.9.1/bin:/usr/local/bin:/opt/komodo/bin:/opt/java/bin:/var/www/ppdmlib/vendor/bin:/opt/node/node-v0.8.9-linux-x64/bin:/opt/node/node-v0.8.9-linux-x64/bin/node_modules/coffee-script/bin/:/opt/komodo/bin:/opt/java/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/lib64/qt4/bin:/usr/local/bin:/usr/lib64/qt4/bin

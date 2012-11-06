@@ -1,0 +1,2 @@
+#!/bin/bash
+xrandr --output DVI-0 --mode 1920x1200 --pos 0x0 --output DVI-1 --mode 1920x1200 --pos 1920x0
