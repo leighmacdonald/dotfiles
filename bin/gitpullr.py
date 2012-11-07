@@ -5,7 +5,7 @@ from os.path import exists, join
 from logging import getLogger
 from subprocess import Popen
 
-log = getLogger(__name__)
+log = getLogger("gitpullr")
 
 def pull(repo_dir):
     orig_dir = getcwd()
