@@ -26,19 +26,27 @@ def update_git_repos(path="./"):
 if __name__ == "__main__":
     from logging import basicConfig, INFO
 
-    basicConfig(level=INFO)
+    basicConfig(level=INFO, format="[%(name)s] %(message)s")
+    ret_val = 1
+    paths = argv[1:]
+
     try:
         from argparse import ArgumentParser
 
         arg_parser = ArgumentParser(prog="gitpullr.py",
             description="Find git repos under a path and update them")
-        arg_parser.add_argument('paths', metavar="PATH", nargs="+", help="Path to scan for repos")
+        arg_parser.add_argument('paths', metavar="PATH", nargs="*", help="Path to scan for repos")
         args = arg_parser.parse_args()
         paths = args.paths
     except ImportError:
         # hack for <2.6
-        paths = argv[1:]
-    ret_val = 1
+        pass
+    except Exception as err:
+        log.error(err)
+        exit(ret_val)
+
+    if not paths:
+        paths = ["."]
     try:
         for path in paths:
             update_git_repos(path)

@@ -249,7 +249,6 @@ for s = 1, scount do
             s == 1 and systray or nil,
             separator, datewidget, dateicon,
             separator, volwidget, volbar.widget, volicon,
-            separator, orgwidget, orgicon,
             separator, mailwidget, mailicon,
             separator, upicon, netwidget, dnicon,
             separator, fs.s.widget, fs.h.widget, fs.r.widget, fs.b.widget, fsicon,
