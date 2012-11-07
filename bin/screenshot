@@ -1,0 +1,6 @@
+#!/bin/zsh
+DIR=$HOME"/screenshots"
+if [ ! -d "$DIR" ]; then
+    `mkdir -p "$DIR"`
+fi
+import -window root -quality 100 $DIR"/screenshot_`eval date +%Y%m%d`.png"
