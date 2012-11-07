@@ -50,8 +50,12 @@ layouts = {
 mypromptbox = {}
 
 tags = {}
-tags[1] = awful.tag({ "code", "term", "watch" }, 1, layouts[2])
-tags[2] = awful.tag({ "www", "vm", "misc", "media" }, 2, layouts[2])
+if scount == 1 then
+    tags[1] = awful.tag({ "xbmc", "www", "term" }, 1, layouts[2])
+else
+    tags[1] = awful.tag({ "code", "term", "watch" }, 1, layouts[2])
+    tags[2] = awful.tag({ "www", "vm", "misc", "media" }, 2, layouts[2])
+end
 -- {{{ Tags
 --tags = {
 --  names  = { "term", "emacs", "web", "mail", "im", 6, 7, "rss", "media" },
@@ -280,7 +284,8 @@ for s = 1, scount do
         border_color = beautiful.border_focus,
         border_width = beautiful.border_width
     })
-    if s == 2 then
+
+    if scount == 1 or s == 2 then
         -- Add widgets to the wibox
         wibox[s].widgets = {
             {   taglist[s], layoutbox[s], separator, promptbox[s],
