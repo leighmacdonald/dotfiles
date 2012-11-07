@@ -36,6 +36,10 @@ local scount = screen.count()
 -- Beautiful theme
 beautiful.init(home .. "/.config/awesome/themes/zenburn-custom/theme.lua")
 
+wallpaper_file = home .. "/.wallpaper.png"
+
+
+
 -- Window management layouts
 layouts = {
   awful.layout.suit.tile,        -- 1
@@ -543,3 +547,8 @@ for s = 1, scount do screen[s]:add_signal("arrange", function ()
 end
 -- }}}
 -- }}}
+
+
+if awful.util.file_readable(wallpaper_file) then
+    exec("awsetbg -t " .. wallpaper_file)
+end

@@ -59,6 +59,10 @@ To customize to your liking there are several options that should be configured 
    ~/.config/awesome/themes. These are pulled from [awesome-themes](https://github.com/mikar/awesome-themes).
    To select a theme just update line 12 in ~/.config/awesome/rc.lua to point to the correct theme file.
 
+4. Wallpaper settings are configured using the wallpaper_file variable under config/awesome/rc.lua:39. By default its set
+   to load the file located at ~/.wallpaper.png if the file exists. Please note that this will override any background
+   set by one of the awesome-themes configurations.
+
 Important Awesome Keybindings
 ----------------------------------
 
