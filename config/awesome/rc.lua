@@ -8,9 +8,6 @@
 -- Alike License: http://creativecommons.org/licenses/by-sa/3.0/
 -- }}}
 
-local terminal = "urxvt"
-local editor = os.getenv("EDITOR") or "vim"
-local editor_cmd = terminal .. " -e " .. editor
 
 -- {{{ Libraries
 require("awful")
@@ -25,18 +22,20 @@ scratch = require("scratch")
 -- {{{ Variable definitions
 local altkey = "Mod1"
 local modkey = "Mod4"
-
+local terminal = "urxvt"
+local editor = os.getenv("EDITOR") or "vim"
+local editor_cmd = terminal .. " -e " .. editor
 local home   = os.getenv("HOME")
 local exec   = awful.util.spawn
 local sexec  = awful.util.spawn_with_shell
 local scount = screen.count()
 
+wallpaper_file = home .. "/.wallpaper.png"
+has_battery = false
+mailbox = home .. "/mail/Inbox"
+
 -- Beautiful theme
 beautiful.init(home .. "/.config/awesome/themes/zenburn-custom/theme.lua")
-
-wallpaper_file = home .. "/.wallpaper.png"
-
-
 
 -- Window management layouts
 layouts = {
@@ -75,7 +74,7 @@ cpuicon.image = image(beautiful.widget_cpu)
 cpugraph  = awful.widget.graph()
 tzswidget = widget({ type = "textbox" })
 -- Graph properties
-cpugraph:set_width(40):set_height(14)
+cpugraph:set_width(100):set_height(14)
 cpugraph:set_background_color(beautiful.fg_off_widget)
 cpugraph:set_gradient_angle(0):set_gradient_colors({
    beautiful.fg_end_widget, beautiful.fg_center_widget, beautiful.fg_widget
@@ -83,24 +82,25 @@ cpugraph:set_gradient_angle(0):set_gradient_colors({
 vicious.register(cpugraph,  vicious.widgets.cpu,      "$1")
 vicious.register(tzswidget, vicious.widgets.thermal, " $1C", 19, { "coretemp.0", "core"})
 -- }}}
-
--- {{{ Battery state
-baticon = widget({ type = "imagebox" })
-baticon.image = image(beautiful.widget_bat)
--- Initialize widget
-batwidget = widget({ type = "textbox" })
--- Register widget
-vicious.register(batwidget, vicious.widgets.bat, "$1$2%", 61, "BAT0")
--- }}}
+if has_battery then
+    -- {{{ Battery state
+    baticon = widget({ type = "imagebox" })
+    baticon.image = image(beautiful.widget_bat)
+    -- Initialize widget
+    batwidget = widget({ type = "textbox" })
+    -- Register widget
+    vicious.register(batwidget, vicious.widgets.bat, "$1$2%", 61, "BAT0")
+    -- }}}
+end
 
 -- {{{ Memory usage
 memicon = widget({ type = "imagebox" })
 memicon.image = image(beautiful.widget_mem)
 -- Initialize widget
 membar = awful.widget.progressbar()
--- Pogressbar properties
+-- Progressbar properties
 membar:set_vertical(true):set_ticks(true)
-membar:set_height(12):set_width(8):set_ticks_size(2)
+membar:set_height(12):set_width(12):set_ticks_size(1)
 membar:set_background_color(beautiful.fg_off_widget)
 membar:set_gradient_colors({ beautiful.fg_widget,
    beautiful.fg_center_widget, beautiful.fg_end_widget
@@ -157,7 +157,7 @@ mailicon.image = image(beautiful.widget_mail)
 -- Initialize widget
 mailwidget = widget({ type = "textbox" })
 -- Register widget
-vicious.register(mailwidget, vicious.widgets.mbox, "$1", 181, {home .. "/mail/Inbox", 15})
+vicious.register(mailwidget, vicious.widgets.mbox, "$1", 181, {mailbox, 15})
 -- Register buttons
 mailwidget:buttons(awful.util.table.join(
   awful.button({ }, 1, function () exec("urxvt -T Alpine -e alpine.exp") end)
