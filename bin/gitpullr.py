@@ -37,7 +37,7 @@ if __name__ == "__main__":
         paths = args.paths
     except ImportError:
         # hack for <2.6
-        paths = [argv[1:]]
+        paths = argv[1:]
     ret_val = 1
     try:
         for path in paths:
