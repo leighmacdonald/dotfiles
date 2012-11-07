@@ -1,0 +1,2 @@
+#!/bin/sh
+ssh rupert.cudd.li -t tmux attach -dd
