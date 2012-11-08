@@ -13,5 +13,5 @@ wmname LG3D
 dualmode
 
 # Start window manager
-#exec awesome
-exec startfluxbox
+exec awesome
+#exec startfluxbox

@@ -8,6 +8,11 @@ Host fs
     User leigh
     Ciphers arcfour
 
+Host mika
+    HostName 10.0.10.4
+    port 22
+    User leigh
+
 Host jenkins
     HostName 10.0.10.7
     Port 22
