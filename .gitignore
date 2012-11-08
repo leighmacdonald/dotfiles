@@ -38,3 +38,6 @@ config/*
 !bin/*
 ssh/*
 !ssh/config
+vim/*
+!vim/vimrc
+!vim/colors
