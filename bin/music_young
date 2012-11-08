@@ -1,0 +1,2 @@
+#!/bin/sh
+mplayer `ls -t /mnt/storage/MUSIC/MUSIC/You* | head -n1`
