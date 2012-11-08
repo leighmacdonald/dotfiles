@@ -1,17 +1,18 @@
 GSSAPIAuthentication no
 
 Host fs
-    HostName cudd.li
-    Port 2
-    ControlMaster auto
-    ControlPath /tmp/ssh_mux_%h_%p_%r
+    HostName 10.0.10.5
+    Port 22
     User leigh
     Ciphers arcfour
 
-Host mika
-    HostName 10.0.10.4
-    port 22
-    User leigh
+Host router
+    HostName 10.0.10.1
+    User root
+
+Host ppdm.org
+    Hostname ppdm.org
+    User root
 
 Host jenkins
     HostName 10.0.10.7
