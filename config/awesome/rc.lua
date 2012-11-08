@@ -277,7 +277,7 @@ for s = 1, scount do
             {   taglist[s], layoutbox[s], separator, promptbox[s],
                 ["layout"] = awful.widget.layout.horizontal.leftright
             },
-            s == 1 and systray or nil,
+            systray or nil,
             separator, datewidget, dateicon,
             separator, volwidget,  volbar.widget, volicon,
             separator, orgwidget,  orgicon,
