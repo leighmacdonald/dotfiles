@@ -30,7 +30,7 @@ There are several integrations and plugins to help with the following tools / li
 Installation
 -----------------------------
 
-Tou must initialize the git submodules first
+On first installation you must initialize the git submodules first
 
     $ git pull
     $ git submodule init
@@ -39,6 +39,10 @@ Tou must initialize the git submodules first
 There is a seperate python based tool called [dotupdate](https://github.com/leighmacdonald/dotupdate) to update
 your symlinks in your home directory, its recommended to use this tool for this process. Please referrer to its
 [README](https://github.com/leighmacdonald/dotupdate/blob/master/README.md) for installation procedures.
+
+Updating
+----------------------------
+
 
 
 Setup Customization
