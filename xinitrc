@@ -9,9 +9,7 @@ chromium &
 # Tell JAVA we are using a non-reparenting window manager
 wmname LG3D
 
-# Enable dual screens on ATI using xrandr
-dualmode
-
+synergyc 172.16.1.11
 # Start window manager
 exec awesome
 #exec startfluxbox
