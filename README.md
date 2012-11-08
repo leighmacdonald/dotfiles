@@ -59,6 +59,14 @@ each system im using.
 3. Commit it
 
     $ git commit -a -m "Updated ssh config"
+
+4. Push your branch
+
+    $ git push origin devel
+
+5. Pull changes in from master
+
+    $ git merge master
     
 Setup Customization
 ----------------------------
