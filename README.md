@@ -40,7 +40,26 @@ There is a seperate python based tool called [dotupdate](https://github.com/leig
 your symlinks in your home directory, its recommended to use this tool for this process. Please referrer to its
 [README](https://github.com/leighmacdonald/dotupdate/blob/master/README.md) for installation procedures.
 
+Multiple Computer Setup
+----------------------------
 
+Since we are using git to perform all the filesyncing magic is quite easy to have custom configurations all based on
+one master config. For example i have some hosts in ssh/config that are only accessable under certain conditions (LAN).
+I want to update these for only some systems, to do that we create a branch. Personally i used a different branch for
+each system im using.
+
+1. The first step is creating your branch
+
+    $ git checkout -b your_branch
+
+2. Edit a file
+
+    $ vim ssh/config
+
+3. Commit it
+
+    $ git commit -a -m "Updated ssh config"
+    
 Setup Customization
 ----------------------------
 

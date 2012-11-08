@@ -6,6 +6,10 @@ Host fs
     User leigh
     Ciphers arcfour
 
+Host pbx
+    HostName 10.0.10.2
+    User leigh
+
 Host router
     HostName 10.0.10.1
     User root
