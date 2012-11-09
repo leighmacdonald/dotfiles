@@ -32,7 +32,12 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
 .idea
-ssh/id_dsa
-ssh/id_dsa.pub
+config/*
 !bin/*
+ssh/*
+!ssh/config
+vim/*
+!vim/vimrc
+!vim/colors
