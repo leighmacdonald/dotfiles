@@ -4,7 +4,7 @@ xsetroot -cursor_name left_ptr
 xsetroot -solid '#131313'
 
 # Start a browser session
-chromium &
+#chromium &
 
 # Tell JAVA we are using a non-reparenting window manager
 wmname LG3D
