@@ -1,5 +1,5 @@
 # Merge configs
-xrdb -merge .Xresources
+#xrdb -merge .Xresources
 xsetroot -cursor_name left_ptr
 xsetroot -solid '#131313'
 
