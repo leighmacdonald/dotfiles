@@ -7,3 +7,6 @@
 [submodule "config/awesome/vicious"]
 	path = config/awesome/vicious
 	url = http://git.sysphere.org/vicious
+[submodule "lib/youtube-dl"]
+	path = lib/youtube-dl
+	url = git://github.com/rg3/youtube-dl.git
