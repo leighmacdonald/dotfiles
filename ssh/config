@@ -1,19 +1,21 @@
 GSSAPIAuthentication no
 
-Host fs
-    HostName cudd.li
-    Port 2
+Host router
+    HostName 172.16.1.10
+    Port 22
     ControlMaster auto
     ControlPath /tmp/ssh_mux_%h_%p_%r
-    User leigh
+    User root
     Ciphers arcfour
 
 Host mika
     HostName 172.16.1.4
     port 22
     User leigh
+    ForwardX11 yes
 
 Host jenkins
     HostName 10.0.10.7
     Port 22
     User jenkins
+
