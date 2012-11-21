@@ -36,3 +36,5 @@ fi
 #git config user.email = 'leigh.macdonald@gmail.com'
 #export GIT_AUTHOR_NAME='Leigh MacDonald'
 #export GIT_AUTHOR_EMAIL='leigh.macdonald@gmail.com'
+export PATH="/usr/sbin:/usr/perl5/5.12/bin:/opt/solarisstudio12.3/bin:$PATH"
+export MANPATH="/opt/solarisstudio12.3/man:$MANPATH"
