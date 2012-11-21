@@ -1,5 +1,17 @@
 GSSAPIAuthentication no
 
+Host net
+    HostName 172.16.1.2
+    User root
+
+Host web
+    HostName 172.16.1.100
+    User root
+
+Host media
+    HostName 172.16.1.101
+    User leigh
+
 Host router
     HostName 172.16.1.10
     Port 22
