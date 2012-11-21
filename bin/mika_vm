@@ -1,0 +1,2 @@
+#!/bin/sh
+ssh -X mika virt-manager
