@@ -34,9 +34,14 @@ wallpaper_file = home .. "/.wallpaper.png"
 has_battery = false
 mailbox = home .. "/mail/Inbox"
 
+
 -- Beautiful theme
 beautiful.init(home .. "/.config/awesome/themes/zenburn-custom/theme.lua")
 
+-- Theme overrides
+beautiful.border_focus = "#FF7C1B"
+beautiful.font = "Terminus 12"
+theme.titlebar_bg_normal = "#000000"
 -- Window management layouts
 layouts = {
     awful.layout.suit.tile, -- 1
