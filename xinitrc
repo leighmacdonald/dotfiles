@@ -6,7 +6,7 @@ chromium &
 
 # Enable dual screens on ATI using xrandr
 dualmode
-
+synergys	
 # Start window manager
 exec awesome
 #exec startfluxbox
