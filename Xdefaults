@@ -52,8 +52,8 @@ urxvt*cutchars:        '"'()*<>[]{|}
 !urxvt*font: xft:Menlo\ For\ Powerline:style=RegularForPowerline
 !URxvt.font:  xft:Anonymous Pro for Powerline:size=14:antialias=true:autohint=false,xft:IPAGothic:size=11:antialias=true
 !URxvt.boldFont:  xft:Anonymous Pro for Powerline:size=14:weight=Bold:antialias=true:autohint=false,xft:IPAGothic:size=11:weight=Bold:antialias=true
-urxvt*boldFont: xft:Source\ Code\ Pro:style=Bold:size=12
-urxvt.font: xft:Source\ Code\ Pro:style=Regular:size=12
+urxvt*boldFont: xft:Source\ Code\ Pro:style=Bold:size=10
+urxvt.font: xft:Source\ Code\ Pro:style=Regular:size=10
 ! Cursor
 urxvt*cursorColor: #DCDCCC
 !
