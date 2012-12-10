@@ -1,8 +1,8 @@
 # Merge configs
-xrdb -merge .Xresources
+#xrdb -merge .Xresources
 
 # Start a browser session
-chromium &
+#chromium &
 
 # Enable dual screens on ATI using xrandr
 dualmode
