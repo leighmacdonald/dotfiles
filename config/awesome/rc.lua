@@ -140,7 +140,7 @@ vicious.cache(vicious.widgets.fs)
 vicious.register(fs.b, vicious.widgets.fs, "${/boot used_p}", 599)
 vicious.register(fs.r, vicious.widgets.fs, "${/ used_p}",     599)
 vicious.register(fs.h, vicious.widgets.fs, "${/home used_p}", 599)
-vicious.register(fs.s, vicious.widgets.fs, "${/mnt/storage used_p}", 599)
+vicious.register(fs.s, vicious.widgets.fs, "${/mnt/media used_p}", 599)
 -- }}}
 
 -- {{{ Network usage
@@ -282,7 +282,7 @@ for s = 1, scount do
             {   taglist[s], layoutbox[s], separator, promptbox[s],
                 ["layout"] = awful.widget.layout.horizontal.leftright
             },
-            s == 1 and systray or nil,
+            s == 2 and systray or nil,
             separator, datewidget, dateicon,
             separator, volwidget,  volbar.widget, volicon,
             separator, orgwidget,  orgicon,
