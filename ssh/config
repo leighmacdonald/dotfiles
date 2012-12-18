@@ -4,7 +4,7 @@ Host fs
     HostName 10.0.10.5
     Port 22
     User leigh
-    Ciphers arcfour
+    #Ciphers arcfour
 
 Host pbx
     HostName 10.0.10.2
