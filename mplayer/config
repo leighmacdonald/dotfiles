@@ -8,4 +8,5 @@ subfont-blur="1.1" #Slight blur
 #afm=hwac3
 cache=2048
 cache-min=20
-
+ao=alsa
+nolirc="true"
