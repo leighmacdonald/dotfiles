@@ -1,1 +1,5 @@
-xrandr --output HDMI3 --right-of HDMI1
+# Work
+xrandr --output DVI-1 --right-of DVI-0
+
+# Home
+# xrandr --output HDMI3 --right-of HDMI1
