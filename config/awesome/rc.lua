@@ -13,6 +13,7 @@
 require("awful")
 require("awful.rules")
 require("awful.autofocus")
+require("naughty")
 -- User libraries
 vicious = require("vicious")
 scratch = require("scratch")
