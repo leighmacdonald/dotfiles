@@ -40,6 +40,14 @@ There is a seperate python based tool called [dotupdate](https://github.com/leig
 your symlinks in your home directory, its recommended to use this tool for this process. Please referrer to its
 [README](https://github.com/leighmacdonald/dotupdate/blob/master/README.md) for installation procedures.
 
+Currently the UI fonts are mostly centered around the faily new Source Code Pro by adobe. These are easy
+to install using yaourt if you are using Arch Linux, its in the AUR.
+
+    $ yaourt -S ttf-source-code-pro
+
+If you are not running Arch you can still [download](http://sourceforge.net/projects/sourcesans.adobe/files/) the
+files and install them manually.
+
 Multiple Computer Setup
 ----------------------------
 

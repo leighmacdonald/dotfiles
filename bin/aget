@@ -1,0 +1,2 @@
+#!/bin/bash
+python2 ~/.lib/youtube-dl/youtube-dl --extract-audio -t -c "$@"

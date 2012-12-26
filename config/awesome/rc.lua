@@ -13,6 +13,7 @@
 require("awful")
 require("awful.rules")
 require("awful.autofocus")
+require("naughty")
 -- User libraries
 vicious = require("vicious")
 scratch = require("scratch")
@@ -34,9 +35,14 @@ wallpaper_file = home .. "/.wallpaper.png"
 has_battery = false
 mailbox = home .. "/mail/Inbox"
 
+
 -- Beautiful theme
 beautiful.init(home .. "/.config/awesome/themes/zenburn-custom/theme.lua")
 
+-- Theme overrides
+beautiful.border_focus = "#FF7C1B"
+beautiful.font = "Terminus 12"
+theme.titlebar_bg_normal = "#000000"
 -- Window management layouts
 layouts = {
     awful.layout.suit.tile, -- 1
@@ -147,8 +153,8 @@ upicon.image = image(beautiful.widget_netup)
 netwidget = widget({ type = "textbox" })
 -- Register widget
 vicious.register(netwidget, vicious.widgets.net, '<span color="'
-  .. beautiful.fg_netdn_widget ..'">${eth0 down_kb}</span> <span color="'
-  .. beautiful.fg_netup_widget ..'">${eth0 up_kb}</span>', 3)
+  .. beautiful.fg_netdn_widget ..'">${br0 down_kb}</span> <span color="'
+  .. beautiful.fg_netup_widget ..'">${br0 up_kb}</span>', 3)
 -- }}}
 
 -- {{{ Mail subject
