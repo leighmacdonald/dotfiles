@@ -6,7 +6,7 @@
 
 # Enable dual screens on ATI using xrandr
 dualmode
-synergys	
+synergys -d WARNING	
 # Start window manager
 exec awesome
 #exec startfluxbox
