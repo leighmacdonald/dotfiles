@@ -5,8 +5,9 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# User specific aliases and functions
-alias music='mplayer http://cudd.li:8000/stream.ogg'
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
 
 PATH=/usr/local/bin:$PATH
 SSH_ENV="$HOME/.ssh/environment"
@@ -32,7 +33,3 @@ else
      start_agent;
 fi
 
-#git config user.name = 'Leigh MacDonald'
-#git config user.email = 'leigh.macdonald@gmail.com'
-#export GIT_AUTHOR_NAME='Leigh MacDonald'
-#export GIT_AUTHOR_EMAIL='leigh.macdonald@gmail.com'

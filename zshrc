@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-
+#export _JAVA_AWT_WM_NONREPARENTING=1
 export LANG=en_US.UTF-8
 export LOCALE=UTF-8
 
@@ -11,10 +11,6 @@ export LOCALE=UTF-8
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="juanghurtado"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -38,7 +34,12 @@ DEFAULT_USER="leigh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git github composer pip python ssh-agent svn yum)
 
-source $ZSH/oh-my-zsh.sh
+export PULSE_SERVER=172.16.1.13
 
-# Customize to your needs...
-export PATH=~/.npm/coffee-script/1.4.0/package/bin:~/.bin:~/.gem/ruby/1.9.1/bin:/usr/local/bin:/opt/komodo/bin:/opt/java/bin:/var/www/ppdmlib/vendor/bin:/opt/node/node-v0.8.9-linux-x64/bin:/opt/node/node-v0.8.9-linux-x64/bin/node_modules/coffee-script/bin/:/opt/komodo/bin:/opt/java/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/lib64/qt4/bin:/usr/local/bin:/usr/lib64/qt4/bin
+
+source $ZSH/oh-my-zsh.sh
+source $HOME/.aliases
+
+
+export PATH=~/.bin:~/.npm/coffee-script/1.4.0/package/bin:~/.bin:~/.gem/ruby/2.0.0/bin:/usr/local/bin:/opt/komodo/bin:/opt/java/bin:/var/www/ppdmlib/vendor/bin:/opt/node/node-v0.8.9-linux-x64/bin:/opt/node/node-v0.8.9-linux-x64/bin/node_modules/coffee-script/bin/:/opt/komodo/bin:/opt/java/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/lib64/qt4/bin:/usr/local/bin:/usr/lib64/qt4/bin:/home/leigh/.gem/ruby/2.0.0/bin/:$PATH
+

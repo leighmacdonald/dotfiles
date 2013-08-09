@@ -1,0 +1,12 @@
+# Git stuff
+alias g='git'
+alias gs='git status'
+alias gp='git pull'
+alias gc='git checkout'
+alias gcb='git checkout -b'
+alias gcm='git commit -a -m'
+alias chrome='chromium --profile-directory="Profile 2"'
+alias chrome-devel='chromium --profile-directory="Profile 1"'
+
+
+PATHDIRS="/srv/http"
