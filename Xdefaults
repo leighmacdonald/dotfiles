@@ -4,6 +4,7 @@
 !{{{ XFT
 Xft.dpi:       96
 Xft.antialias: 1
+Xft.lcdfilter: lcddefault
 Xft.hinting:   1
 Xft.hintstyle: hintfull
 Xft.rgba:      rgb
@@ -28,13 +29,13 @@ urxvt*cursorBlink:        true
 !urxvt*cursorUnderline:   true
 urxvt*urgentOnBell:       true
 !urxvt*override-redirect:false
-!urxvt*borderLess:       false
+urxvt*borderLess:       false
 !urxvt*internalBorder:       0
 !urxvt*externalBorder:       0
 !
 ! Extensions
 urxvt*perl-lib:        /usr/lib/urxvt/perl/
-urxvt*perl-ext-common: default,matcher,searchable-scrollback
+urxvt*perl-ext: default,matcher,searchable-scrollback
 urxvt*urlLauncher:     /usr/bin/chromium
 urxvt*matcher.button:  1
 ! Catch ugly URLs
@@ -50,50 +51,91 @@ urxvt*cutchars:        '"'()*<>[]{|}
 !urxvt*font: x:9x15,xft:pragmata
 !urxvt*boldFont: x:9x15,xft:pragmata
 !urxvt*font: xft:Menlo\ For\ Powerline:style=RegularForPowerline
-!URxvt.font:  xft:Anonymous Pro for Powerline:size=14:antialias=true:autohint=false,xft:IPAGothic:size=11:antialias=true
-!URxvt.boldFont:  xft:Anonymous Pro for Powerline:size=14:weight=Bold:antialias=true:autohint=false,xft:IPAGothic:size=11:weight=Bold:antialias=true
-urxvt*boldFont: xft:Source\ Code\ Pro:style=Bold:size=10
-urxvt.font: xft:Source\ Code\ Pro:style=Regular:size=10
+URxvt.font:  xft:Anonymous Pro for Powerline:size=12:antialias=true:autohint=false,xft:IPAGothic:size=11:antialias=true
+URxvt.boldFont:  xft:Anonymous Pro for Powerline:size=12:weight=Bold:antialias=true:autohint=false,xft:IPAGothic:size=11:weight=Bold:antialias=true
+!urxvt*boldFont: xft:Source\ Code\ Pro:style=Bold:size=10
+!urxvt.font: xft:Source\ Code\ Pro:style=Regular:size=10
 ! Cursor
 urxvt*cursorColor: #DCDCCC
 !
 ! Pseudo Transparency
-urxvt*shading:    100
-urxvt*transparent:true
+urxvt*shading:    35
+urxvt*transparent:false
 
 !urxvt*depth: 32
 !urxvt*background: rgba:0000/0000/0000/dddd
 
 ! 
 ! Zenburn color-scheme
-urxvt*background:  #1E2320
+
+*background: #002b36
+*foreground: #657b83
+!!*fading: 40
+*fadeColor: #002b36
+*cursorColor: #93a1a1
+*pointerColorBackground: #586e75
+*pointerColorForeground: #93a1a1
+ 
+!! black dark/light
+*color0: #073642
+*color8: #002b36
+ 
+!! red dark/light
+*color1: #dc322f
+*color9: #cb4b16
+ 
+!! green dark/light
+*color2: #859900
+*color10: #586e75
+ 
+!! yellow dark/light
+*color3: #b58900
+*color11: #657b83
+ 
+!! blue dark/light
+*color4: #268bd2
+*color12: #839496
+ 
+!! magenta dark/light
+*color5: #d33682
+*color13: #6c71c4
+ 
+!! cyan dark/light
+*color6: #2aa198
+*color14: #93a1a1
+ 
+!! white dark/light
+*color7: #eee8d5
+*color15: #fdf6e3
+
+!urxvt*background:  #1E2320
 !#3f3f3f
-urxvt*foreground:  #dcdccc
+!urxvt*foreground:  #dcdccc
 ! black + red
 !urxvt*color0:     #3f3f3f
-urxvt*color0:      #1E2320
-urxvt*color1:      #705050
+!urxvt*color0:      #1E2320
+!urxvt*color1:      #705050
 ! green + yellow
-urxvt*color2:      #60b48a
-urxvt*color3:      #dfaf8f
+!urxvt*color2:      #60b48a
+!urxvt*color3:      #dfaf8f
 ! blue + purple
-urxvt*color4:      #506070
-urxvt*color5:      #dc8cc3
+!urxvt*color4:      #506070
+!urxvt*color5:      #dc8cc3
 ! cyan + white
-urxvt*color6:      #8cd0d3
-urxvt*color7:      #dcdccc
+!urxvt*color6:      #8cd0d3
+!urxvt*color7:      #dcdccc
 ! bright-black + bright-red
-urxvt*color8:      #709080
-urxvt*color9:      #dca3a3
+!urxvt*color8:      #709080
+!urxvt*color9:      #dca3a3
 ! bright-green + bright-yellow
-urxvt*color10:     #c3bf9f
-urxvt*color11:     #f0dfaf
+!urxvt*color10:     #c3bf9f
+!urxvt*color11:     #f0dfaf
 ! bright-blue + bright-purple
-urxvt*color12:     #94bff3
-urxvt*color13:     #ec93d3
+!urxvt*color12:     #94bff3
+!urxvt*color13:     #ec93d3
 ! bright-cyan + bright-white
-urxvt*color14:     #93e0e3
-urxvt*color15:     #ffffff
+!urxvt*color14:     #93e0e3
+!urxvt*color15:     #ffffff
 !}}}
 
 

@@ -1,2 +1,2 @@
 #!/bin/sh
-ssh rupert.cudd.li -t tmux attach -dd
+ssh rupert.cudd.li -t tmux attach -t chat

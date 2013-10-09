@@ -10,5 +10,7 @@ chromium &
 dualmode
 synergys	
 # Start window manager
+/home/leigh/.bin/vertical.sh
+#exec gnome-session
 exec awesome
 #exec startfluxbox

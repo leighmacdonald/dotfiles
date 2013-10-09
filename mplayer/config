@@ -10,3 +10,6 @@ cache=512
 cache-min=20
 ao=alsa
 nolirc="true"
+nojoystick="true"
+# allow to seek in a file which is still downloading whilst watching it
+idx=yes
