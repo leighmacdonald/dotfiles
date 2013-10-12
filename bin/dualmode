@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 xrandr --output HDMI2 --right-of HDMI1
+=======
+xrandr --output HDMI3 --rotate left --right-of HDMI1 --rotate left
+#xrandr --output HDMI1 
+>>>>>>> c18adc9d5cba5c18a972a970a67286d58d0f272f

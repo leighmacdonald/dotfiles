@@ -7,5 +7,6 @@
 	branch = auto
 [core]
 	excludesfile = /home/leigh/.gitignore
+	autocrlf = input
 [push]
 	default = simple

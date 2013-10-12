@@ -7,10 +7,11 @@ xsetroot -solid '#131313'
 chromium &
 
 # Enable dual screens on ATI using xrandr
+start-pulseaudio-x11
 dualmode
-synergys	
+synergys --debug ERROR
 # Start window manager
-/home/leigh/.bin/vertical.sh
 #exec gnome-session
 exec awesome
+#exec gnome-session
 #exec startfluxbox
