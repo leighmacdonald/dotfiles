@@ -8,11 +8,7 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
-<<<<<<< HEAD
 naughty = require("naughty")
-=======
-local naughty = require("naughty")
->>>>>>> c18adc9d5cba5c18a972a970a67286d58d0f272f
 local menubar = require("menubar")
 
 -- {{{ Error handling
@@ -42,12 +38,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-<<<<<<< HEAD
 beautiful.init("/home/leigh/.config/awesome/themes/awesome-solarized/dark/theme.lua")
 --beautiful.init("/home/leigh/.config/awesome/zenburn/theme.lua")
-=======
-beautiful.init("/home/leigh/.config/awesome/zenburn/theme.lua")
->>>>>>> c18adc9d5cba5c18a972a970a67286d58d0f272f
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -437,11 +429,5 @@ client.connect_signal("manage", function (c, startup)
     end
 end)
 
-<<<<<<< HEAD
--- client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
--- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
-=======
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
->>>>>>> c18adc9d5cba5c18a972a970a67286d58d0f272f
--- }}}
