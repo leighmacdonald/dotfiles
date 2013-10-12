@@ -17,3 +17,7 @@ Host jenkins
     HostName 10.0.10.7
     Port 22
     User jenkins
+
+Host sb
+    HostName 94.242.254.72
+    User roto
