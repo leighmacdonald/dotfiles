@@ -21,7 +21,8 @@ autocmd FileType phtml noremap <C-L> :!/usr/bin/env php -l %<CR>
 :set number
 :highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
-:set t_Co=256
-:colorscheme zenburn
+set background=dark
+set t_Co=256
+colorscheme solarized
 let g:miniBufExplMapCTabSwitchWindows = 1
 let g:miniBufExplUseSingleClick = 1
