@@ -8,7 +8,7 @@ subfont-blur="1.1" #Slight blur
 #afm=hwac3
 cache=512
 cache-min=20
-ao=alsa
+ao=pulse
 nolirc="true"
 nojoystick="true"
 # allow to seek in a file which is still downloading whilst watching it

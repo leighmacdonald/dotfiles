@@ -40,7 +40,7 @@ export PULSE_SERVER=172.16.1.13
 source $ZSH/oh-my-zsh.sh
 #source $HOME/.aliases
 
-export TERM=rxvt-unicode-256color
+export TERM=rxvt-unicode
 
 export PATH=~/.bin:~/.npm/coffee-script/1.4.0/package/bin:~/.bin:~/.gem/ruby/2.0.0/bin:/usr/local/bin:/opt/komodo/bin:/opt/java/bin:/var/www/ppdmlib/vendor/bin:/opt/node/node-v0.8.9-linux-x64/bin:/opt/node/node-v0.8.9-linux-x64/bin/node_modules/coffee-script/bin/:/opt/komodo/bin:/opt/java/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/lib64/qt4/bin:/usr/local/bin:/usr/lib64/qt4/bin:/home/leigh/.gem/ruby/2.0.0/bin/:$PATH
 
