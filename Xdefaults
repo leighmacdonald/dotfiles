@@ -36,7 +36,7 @@ urxvt*borderLess:       false
 ! Extensions
 !urxvt*perl-lib:        /usr/lib/urxvt/perl/
 URxvt.perl-ext-common: default,matcher,searchable-scrollback,readline
-urxvt.urlLauncher: chromium
+urxvt.url-launcher: chromium
 URxvt.matcher.button: 1
 ! Catch ugly URLs
 urxvt*cutchars:        '"'()*<>[]{|}
@@ -56,7 +56,9 @@ URxvt.boldFont:  xft:Anonymous Pro for Powerline:size=13:weight=Bold:antialias=t
 !urxvt*boldFont: xft:Source\ Code\ Pro:style=Bold:size=12
 !urxvt.font: xft:Source\ Code\ Pro:style=Regular:size=12
 ! Cursor
-urxvt*cursorColor: #DCDCCC
+URxvt.internalBorder:10
+
+urxvt*cursorColor: #586e75
 !
 ! Pseudo Transparency
 urxvt*shading:    35

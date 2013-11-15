@@ -34,8 +34,9 @@ DEFAULT_USER="leigh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git github composer pip python ssh-agent svn yum)
 
-export PULSE_SERVER=172.16.1.13
-
+if [[ `hostname -s` = "ws2" ]]; then
+	export PULSE_SERVER=172.16.1.13
+fi
 
 source $ZSH/oh-my-zsh.sh
 #source $HOME/.aliases
