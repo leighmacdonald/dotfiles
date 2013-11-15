@@ -5,7 +5,7 @@ xsetroot -solid '#131313'
 
 # Start a browser session
 chromium &
-
+xflux -z 98101 -r 1 -n
 # Enable dual screens on ATI using xrandr
 start-pulseaudio-x11
 dualmode
