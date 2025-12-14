@@ -1,0 +1,152 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "git": {
+    "branch_picker": {
+      "show_author_name": false
+    },
+    "blame": {
+      "show_avatar": false
+    },
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "close_on_file_delete": true,
+  "use_smartcase_search": true,
+  "when_closing_with_no_tabs": "keep_window_open",
+  "debugger": {
+    "log_dap_communications": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "outline_panel": {
+    "file_icons": true,
+    "button": false
+  },
+  "project_panel": {
+    "hide_hidden": false,
+    "hide_root": true,
+    "auto_reveal_entries": false,
+    "indent_size": 10.0,
+    "file_icons": true,
+    "entry_spacing": "standard",
+    "hide_gitignore": false
+  },
+  "window_decorations": "server",
+  "use_system_window_tabs": false,
+  "bottom_dock_layout": "full",
+  "tab_bar": {
+    "show": true
+  },
+  "title_bar": {
+    "show_sign_in": false,
+    "show_user_picture": false,
+    "show_menus": false,
+    "show_branch_icon": true
+  },
+  "search": {
+    "button": true
+  },
+  "status_bar": {
+    "cursor_position_button": true
+  },
+  "inlay_hints": {
+    "edit_debounce_ms": 695
+  },
+  "indent_guides": {
+    "background_coloring": "indent_aware",
+    "coloring": "indent_aware"
+  },
+  "soft_wrap": "prefer_line",
+  "preferred_line_length": 121,
+  "minimap": {
+    "show": "never"
+  },
+  "scrollbar": {
+    "show": "always"
+  },
+  "relative_line_numbers": "disabled",
+  "hover_popover_delay": 200,
+  "show_signature_help_after_edits": true,
+  "auto_signature_help": true,
+  "ui_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_line_height": "standard",
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "agent": {
+    "play_sound_when_agent_done": true,
+    "profiles": {
+      "testing": {
+        "name": "Testing",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
+    },
+    "use_modifier_to_send": true,
+    "default_model": {
+      "provider": "ollama",
+      "model": "qwen3-coder:latest"
+    }
+  },
+  "lsp": {
+    "hls": {
+      "initialization_options": {
+        "haskell": {
+          "formattingProvider": "fourmolu"
+        }
+      }
+    }
+  },
+  "context_servers": {
+    "postgres-context-server": {
+      "enabled": true,
+      "settings": {
+        "database_url": "postgresql://myuser:mypassword@localhost:5432/mydatabase"
+      }
+    }
+  },
+  "languages": {
+    "SQL": {
+      "formatter": {
+        "external": {
+          "command": "sql-formatter",
+          "arguments": ["--language", "postgresql"]
+        }
+      }
+    }
+  },
+  "ssh_connections": [
+    {
+      "host": "mtl-1",
+      "projects": [
+        {
+          "paths": ["/home/tf2server"]
+        }
+      ]
+    }
+  ],
+  "icon_theme": "Catppuccin Mocha",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "tabs": {
+    "show_diagnostics": "all",
+    "git_status": true,
+    "file_icons": true
+  },
+  "disable_ai": false,
+  "unstable.ui_density": "compact",
+  "ui_font_size": 20,
+  "buffer_font_size": 20,
+  "base_keymap": "JetBrains",
+  "theme": "Catppuccin Mocha"
+}

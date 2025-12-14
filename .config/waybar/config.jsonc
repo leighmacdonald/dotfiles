@@ -1,0 +1,233 @@
+{
+  "output": "DP-3",
+  // "layer": "Optional", // Waybar at top layer
+  "position": "bottom", // Waybar position (top|bottom|left|right)
+  "height": 32, // Waybar height (to be removed for auto height)
+  // "width": 1280, // Waybar width
+  "spacing": 0, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "modules-left": ["mpd"],
+  "modules-center": [],
+  "modules-right": [
+    "systemd-failed-units",
+    "custom/weather",
+    "cpu",
+    "memory",
+    "disk#root",
+    "disk#storage",
+    "disk#music",
+    "temperature#cpu",
+    "custom/gpu-usage",
+    "pulseaudio",
+    "clock",
+    "tray",
+  ],
+  "systemd-failed-units": {
+    "hide-on-ok": false, // Do not hide if there is zero failed units.
+    "format": "<span color=\"#f38ba8\">✗ {nr_failed}</span>",
+    "format-ok": "<span color=\"#a6e3a1\">✓</span>",
+    "system": true, // Monitor failed systemwide units.
+    "user": true, // Ignore failed user units.
+  },
+  "custom/weather": {
+    "format": "{}°",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar --hide-conditions --nerd",
+    "return-type": "json",
+  },
+  // "custom/weather": {
+  //   "exec": "curl 'https://wttr.in/?format=1'",
+  //   "interval": 3600,
+  //   "format": "{}",
+  //   "tooltip": true,
+  // },
+  "disk#root": {
+    "interval": 30,
+    "format": " {percentage_free}%",
+    "path": "/",
+  },
+  "disk#storage": {
+    "interval": 30,
+    "format": "󰒍 {percentage_free}%",
+    "path": "/mnt/storage",
+  },
+  "disk#music": {
+    "interval": 30,
+    "format": " {percentage_free}%",
+    "path": "/mnt/storage/music",
+  },
+  "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "1": ["HDMI-A-1"],
+      "2": ["DP-2"],
+      "3": ["DP-1"],
+      "4": ["DP-3"],
+    },
+  },
+  "gamemode": {
+    "format": "{glyph}",
+    "format-alt": "{glyph} {count}",
+    "glyph": "",
+    "hide-not-running": true,
+    "use-icon": true,
+    "icon-name": "input-gaming-symbolic",
+    "icon-spacing": 4,
+    "icon-size": 16,
+    "tooltip": true,
+    "tooltip-format": "Games running: {count}",
+  },
+  "mpd": {
+    "format": "<span color=\"#b4befe\">{artist}</span> <span color=\"#89b4fa\">{album}</span> <span color=\"#89dceb\">{title}</span> <span color=\"#eba0ac\">{elapsedTime:%M:%S}</span>/<span color=\"#f38ba8\">{totalTime:%M:%S}</span>",
+    "format-disconnected": "Disconnected",
+    "format-stopped": "Stopped",
+    "unknown-tag": "N/A",
+    "interval": 2,
+    "on-click": "ghostty -e ncmpcpp",
+    "max-length": 100,
+    "consume-icons": {
+      "on": " ",
+    },
+    "random-icons": {
+      "off": "<span color=\"#f53c3c\"></span> ",
+      "on": " ",
+    },
+    "repeat-icons": {
+      "on": " ",
+    },
+    "single-icons": {
+      "on": "1 ",
+    },
+    "state-icons": {
+      "paused": "<span color=\"#1e66f5\">></span>",
+      "playing": "<span color=\"#40a02b\"></span>",
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)",
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": "",
+    },
+  },
+  "tray": {
+    "icon-size": 24,
+    "spacing": 6,
+  },
+  "clock": {
+    "timezone": "America/Edmonton",
+    "format": "󰃭 {:%Y-%m-%d <span color=\"#f9e2af\">󰥔 %H:%M</span>}",
+    "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#f9e2af'><b>{}</b></span>",
+        "days": "<span color='#74c7ec'><b>{}</b></span>",
+        "weeks": "<span color='#cba6f7'><b>W{}</b></span>",
+        "weekdays": "<span color='#f5c2e7'><b>{}</b></span>",
+        "today": "<span color='#a6e3a1'><b><u>{}</u></b></span>",
+      },
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "tz_up",
+      "on-scroll-down": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+  },
+  "cpu": {
+    "interval": 1,
+    "format": " <span color='#94e2d5'>{load}/{usage}%</span> {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+    "format-icons": [
+      "<span color='#74c7ec'>▁</span>",
+      "<span color='#89dceb'>▂</span>",
+      "<span color='#94e2d5'>▃</span>",
+      "<span color='#a6e3a1'>▄</span>",
+      "<span color='#f9e2af'>▅</span>",
+      "<span color='#fab387'>▆</span>",
+      "<span color='#eba0ac'>▇</span>",
+      "<span color='#f38ba8'>█</span>",
+    ],
+  },
+  "memory": {
+    "states": {
+      "good": 10,
+      "warning": 80,
+      "critical": 95,
+    },
+    "format": " {percentage}%",
+    // "format-icons": [
+    //   "<span color='#74c7ec'>▁</span>",
+    //   "<span color='#89dceb'>▂</span>",
+    //   "<span color='#94e2d5'>▃</span>",
+    //   "<span color='#a6e3a1'>▄</span>",
+    //   "<span color='#f9e2af'>▅</span>",
+    //   "<span color='#fab387'>▆</span>",
+    //   "<span color='#eba0ac'>▇</span>",
+    //   "<span color='#f38ba8'>█</span>",
+    // ],
+  },
+  "temperature#cpu": {
+    // "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "{icon} {temperatureC}°C",
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", ""],
+  },
+  "custom/gpu-usage": {
+    // "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu,memory.used,memory.total --format=csv,noheader,nounits",
+    "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+    "format": "󰈐 {}%",
+    "return-type": "",
+    "interval": 1,
+  },
+  // "custom/gpu": {
+  //   "critical-threshold": 63,
+  //   "format": "{icon} {temperatureC}°C",
+  //   "format-icons": ["", "", ""],
+  // },
+  "load": {
+    "interval": 1,
+    "format": "load: {load1} {load5} {load15}",
+  },
+  "network": {
+    "interface": "tailscale0", // (Optional) To force the use of this interface
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+  },
+  "user": {
+    "format": "up {work_d} days ↑",
+    "icon": false,
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": "󰝟 {icon} {format_source}",
+    "format-muted": "󰝟 {format_source}",
+    "format-source": "{volume}%",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""],
+    },
+    "on-click": "pavucontrol",
+  },
+}
