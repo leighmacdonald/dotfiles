@@ -4,7 +4,7 @@
   "position": "bottom", // Waybar position (top|bottom|left|right)
   "height": 32, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
-  "spacing": 0, // Gaps between modules (4px)
+  "spacing": 2, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": ["mpd"],
   "modules-center": [],
@@ -36,12 +36,6 @@
     "exec": "wttrbar --hide-conditions --nerd",
     "return-type": "json",
   },
-  // "custom/weather": {
-  //   "exec": "curl 'https://wttr.in/?format=1'",
-  //   "interval": 3600,
-  //   "format": "{}",
-  //   "tooltip": true,
-  // },
   "disk#root": {
     "interval": 30,
     "format": " {percentage_free}%",
@@ -138,8 +132,6 @@
       "on-click-right": "mode",
       "on-scroll-up": "tz_up",
       "on-scroll-down": "tz_down",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
     },
   },
   "cpu": {
@@ -163,16 +155,6 @@
       "critical": 95,
     },
     "format": " {percentage}%",
-    // "format-icons": [
-    //   "<span color='#74c7ec'>▁</span>",
-    //   "<span color='#89dceb'>▂</span>",
-    //   "<span color='#94e2d5'>▃</span>",
-    //   "<span color='#a6e3a1'>▄</span>",
-    //   "<span color='#f9e2af'>▅</span>",
-    //   "<span color='#fab387'>▆</span>",
-    //   "<span color='#eba0ac'>▇</span>",
-    //   "<span color='#f38ba8'>█</span>",
-    // ],
   },
   "temperature#cpu": {
     // "thermal-zone": 2,
