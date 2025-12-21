@@ -68,6 +68,18 @@ return {
         },
     },
     {
+        "stevearc/conform.nvim",
+        opts = {
+            formatters = {
+                nixfmt = {
+                    inherit = true,
+                    -- command = "nixfmt",
+                    append_args = { "--indent", "4" },
+                },
+            },
+        },
+    },
+    {
         "pwntester/codeql.nvim",
         dependencies = {
             "MunifTanjim/nui.nvim",

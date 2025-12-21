@@ -1,7 +1,1 @@
-set recolor true
-set recolor-darkcolor "#dcdccc"
-set recolor-lightcolor "#1f1f1f"
-set window-title-basename "true"
-set selection-clipboard "clipboard"
-include catppuccin-mocha
-
+/nix/store/9cfywnjnnd0a4kldmq3wsl7l26dgd8m9-home-manager-files/.config/zathura/zathurarc
