@@ -1,11 +1,3 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
   "git": {
     "branch_picker": {
@@ -63,7 +55,8 @@
   },
   "indent_guides": {
     "background_coloring": "indent_aware",
-    "coloring": "indent_aware"
+    "coloring": "indent_aware",
+    "enabled": false
   },
   "soft_wrap": "prefer_line",
   "preferred_line_length": 121,
@@ -77,9 +70,9 @@
   "hover_popover_delay": 200,
   "show_signature_help_after_edits": true,
   "auto_signature_help": true,
-  "ui_font_family": "JetBrainsMono Nerd Font Mono",
+  "ui_font_family": "DejaVu Sans",
   "buffer_line_height": "standard",
-  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
   "agent": {
     "play_sound_when_agent_done": true,
     "profiles": {
@@ -109,7 +102,7 @@
     "postgres-context-server": {
       "enabled": true,
       "settings": {
-        "database_url": "postgresql://myuser:mypassword@localhost:5432/mydatabase"
+        "database_url": "postgresql://gbans:gbans@localhost:5432/gbans"
       }
     }
   },
@@ -118,7 +111,10 @@
       "formatter": {
         "external": {
           "command": "sql-formatter",
-          "arguments": ["--language", "postgresql"]
+          "arguments": [
+            "--language",
+            "postgresql"
+          ]
         }
       }
     }
@@ -128,7 +124,9 @@
       "host": "mtl-1",
       "projects": [
         {
-          "paths": ["/home/tf2server"]
+          "paths": [
+            "/home/tf2server"
+          ]
         }
       ]
     }
@@ -145,8 +143,28 @@
   },
   "disable_ai": false,
   "unstable.ui_density": "compact",
-  "ui_font_size": 20,
-  "buffer_font_size": 20,
+  "ui_font_size": 21.333333333333332,
+  "buffer_font_size": 24.0,
   "base_keymap": "JetBrains",
-  "theme": "Catppuccin Mocha"
+  "theme": "Base16 Catppuccin Mocha",
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "dockerfile": true,
+    "github-actions": true,
+    "golangci-ling": true,
+    "gosum": true,
+    "gotmpl": true,
+    "neocmake": true,
+    "nix": true,
+    "postgres-context-server": true,
+    "postgres-language-server": true,
+    "sql": true,
+    "templ": true,
+    "vhs": true,
+    "golangci-lint": true
+  },
+  "unstable": {
+    "ui_density": "compact"
+  }
 }

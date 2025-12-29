@@ -1,6 +1,5 @@
 {
     config,
-    nixgl,
     pkgs,
     lib,
     ...
@@ -21,26 +20,84 @@
         };
     };
 
-    stylix = {
-        enable = true;
-        polarity = "dark";
-        # -base24Scheme = "${pkgs.base24-schemes}/share/themes/catppuccin-mocha.yaml";
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-        fonts = {
-            monospace = {
-                package = pkgs.nerd-fonts.jetbrains-mono;
-            };
-            serif = {
-                package = pkgs.nerd-fonts.jetbrains-mono;
-            };
-            sansSerif = {
-                package = pkgs.nerd-fonts.jetbrains-mono;
-            };
-            emoji = {
-                package = pkgs.nerd-fonts.jetbrains-mono;
+    accounts = {
+        email = {
+            accounts = {
+                gmail = {
+                    enable = true;
+                    realName = "Leigh MacDonald";
+                    address = "leigh.macdonald@gmail.com";
+                    primary = true;
+                };
             };
         };
     };
+
+    stylix = {
+        enable = true;
+        autoEnable = true;
+        polarity = "dark";
+        # -base24Scheme = "${pkgs.base24-schemes}/share/themes/catppuccin-mocha.yaml";
+        imageScalingMode = "fill";
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+        overlays.enable = true;
+        opacity.popups = 0.8;
+        override = {
+            base00 = "11111b";
+        };
+        fonts = {
+            sizes = {
+                applications = 16;
+                terminal = 18;
+                desktop = 22;
+                popups = 26;
+
+            };
+            serif = {
+                package = pkgs.dejavu_fonts;
+                name = "DejaVu Serif";
+            };
+
+            sansSerif = {
+                package = pkgs.dejavu_fonts;
+                name = "DejaVu Sans";
+            };
+            monospace = {
+                package = pkgs.nerd-fonts.jetbrains-mono;
+                name = "JetBrainsMono Nerd Font";
+            };
+            emoji = {
+                package = pkgs.noto-fonts-color-emoji;
+                name = "Noto Color Emoji";
+            };
+        };
+        targets = {
+            font-packages = {
+                enable = true;
+            };
+            fontconfig.fonts = {
+                enable = true;
+            };
+            ghostty = {
+                enable = true;
+                colors.enable = true;
+                fonts.enable = true;
+            };
+            cava = {
+                rainbow.enable = true;
+            };
+        };
+    };
+
+    #fonts = {
+    #packages = with pkgs; [
+    #    nerd-fonts.jetbrains-mono
+    #    #nerd-fonts.droid-sans-mono
+    #];
+    #    fontconfig = {
+    #        enable = true;
+    #    };
+    #};
 
     nixpkgs.config.nvidia.acceptLicense = true;
 
@@ -63,23 +120,34 @@
         # release notes.
         stateVersion = "25.11"; # Please read the comment before changing.
 
-        packages = [
-            pkgs.nixfmt
-            pkgs.statix
-            pkgs.sqlc
-            pkgs.babelfish
-            pkgs.gci
-            pkgs.gofumpt
-            pkgs.gopls
-            pkgs.goreleaser
-            pkgs.govulncheck
-            pkgs.nilaway
-            pkgs.oapi-codegen
-            pkgs.templ
-            pkgs.vhs
+        packages = with pkgs; [
+            nixfmt
+            statix
+            sqlc
+            babelfish
+            gci
+            gofumpt
+            gopls
+            goreleaser
+            govulncheck
+            nilaway
+            oapi-codegen
+            templ
+            vhs
+            sops
+            age
+            nil
+            nixpkgs-fmt
+            flameshot
+            delta
+            bat
+            #(pkgs.glibcLocales.override {
+            #    allLocales = false;
+            #    locales = [ "en_US.UTF-8/UTF-8" ];
+            #})
             #pkgs.nixgl.auto.nixGLDefault
-            #pkgs.nerd-fonts-jetbrains-mono
-            # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+            # pkgs.nerd-fonts.jetbrains-mono
+            #(pkgs.nerd-fonts.override { fonts = [ "JetBrainsMono Nerd Font" ]; })
 
         ];
 
@@ -99,6 +167,8 @@
         #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
         sessionVariables = {
             EDITOR = "nvim";
+            SUDO_EDITOR = "nvim";
+            MANPAGER = "nvim +Man!";
         };
         sessionPath = [
             "$HOME/.nix-profile/bin"
@@ -117,8 +187,52 @@
 
         git = {
             enable = true;
-            settings.user.name = "Leigh MacDonald";
-            settings.user.email = "leigh.macdonald@gmail.com";
+            settings = {
+                gpg = {
+                    format = "ssh";
+                };
+                commit = {
+                    gpgsign = true;
+                };
+                rerere = {
+                    enabled = true;
+                };
+                diff = {
+                    algorithm = "histogram";
+                    submodule = "log";
+                };
+                core = {
+                    pager = "delta";
+                    autocrlf = false;
+                };
+                fetch = {
+                    prune = true;
+                };
+                init = {
+                    defaultBranch = "master";
+                };
+                push = {
+                    autoSetupRemote = true;
+                    followtags = true;
+                };
+                rebase = {
+                    updateRefs = true;
+                };
+                merge = {
+                    conflictstyle = "zdiff3";
+                };
+                status = {
+                    submoduleSummary = true;
+                };
+                submodule = {
+                    recurse = true;
+                };
+                user = {
+                    name = "Leigh MacDonald";
+                    email = "leigh.macdonald@gmail.com";
+                    signingkey = "~/.ssh/id_rsa.pub";
+                };
+            };
             ignores = [
                 "*~"
                 "*.swp"
@@ -140,12 +254,186 @@
                 general.framerate = 60;
             };
         };
+
+        gpg = {
+            enable = true;
+            mutableKeys = true;
+            mutableTrust = true;
+        };
+
+        zed-editor = {
+            enable = true;
+            extensions = [
+                "catppuccin"
+                "catppuccin-icons"
+                "dockerfile"
+                "github-actions"
+                "golangci-lint"
+                "gosum"
+                "gotmpl"
+                "neocmake"
+                "nix"
+                "postgres-language-server"
+                "postgres-context-server"
+                "sql"
+                "templ"
+                "vhs"
+            ];
+
+            userSettings = {
+                telemetry = {
+                    diagnostics = false;
+                    metrics = false;
+                };
+                tabs = {
+                    show_diagnostics = "all";
+                    git_status = true;
+                    file_icons = true;
+                };
+
+                project_panel = {
+                    hide_hidden = false;
+                    hide_root = true;
+                    auto_reveal_entries = false;
+                    indent_size = 10.0;
+                    file_icons = true;
+                    entry_spacing = "standard";
+                    hide_gitignore = false;
+                };
+                window_decorations = "server";
+                use_system_window_tabs = false;
+                bottom_dock_layout = "full";
+
+                collaboration_panel = {
+                    button = false;
+                };
+                close_on_file_delete = true;
+                use_smartcase_search = true;
+                when_closing_with_no_tabs = "keep_window_open";
+                git = {
+                    branch_picker = {
+                        show_author_name = false;
+                    };
+                    blame = {
+                        show_avatar = false;
+                    };
+                    inline_blame = {
+                        enabled = false;
+                    };
+                };
+                title_bar = {
+                    show_sign_in = false;
+                    show_user_picture = false;
+                    show_menus = false;
+                    show_branch_icon = true;
+                };
+                search = {
+                    button = true;
+                };
+                status_bar = {
+                    cursor_position_button = true;
+                };
+                inlay_hints = {
+                    edit_debounce_ms = 695;
+                };
+                indent_guides = {
+                    enabled = false;
+                    background_coloring = "indent_aware";
+                    coloring = "indent_aware";
+                };
+                soft_wrap = "prefer_line";
+                preferred_line_length = 121;
+                minimap = {
+                    show = "never";
+                };
+                scrollbar = {
+                    show = "always";
+                };
+                relative_line_numbers = "disabled";
+                hover_popover_delay = 200;
+                show_signature_help_after_edits = true;
+                auto_signature_help = true;
+                #icon_theme = "";
+                unstable.ui_density = "compact";
+                base_keymap = "JetBrains";
+                lsp = {
+                    hls = {
+                        initialization_options = {
+                            haskell = {
+                                formattingProvider = "fourmolu";
+                            };
+                        };
+                    };
+                };
+                context_servers = {
+                    postgres-context-server = {
+                        source = "extension";
+                        enabled = true;
+                        settings = {
+                            database_url = "postgresql://gbans:gbans@localhost:5432/gbans";
+                        };
+                    };
+                };
+                languages = {
+                    SQL = {
+                        formatter = {
+                            external = {
+                                command = "sql-formatter";
+                                arguments = [
+                                    "--language"
+                                    "postgresql"
+                                ];
+                            };
+                        };
+                    };
+                };
+            };
+        };
+
+        keepassxc = {
+            enable = true;
+            #autostart = true;
+            settings = {
+                General = {
+                    AutoGeneratePasswordForNewEntries = true;
+                    ConfigVersion = 2;
+                    MinimizeAfterUnlock = true;
+                };
+
+                Browser = {
+                    Enabled = true;
+                };
+                GUI = {
+                    ApplicationTheme = "dark";
+                    CompactMode = true;
+                    MinimizeOnClose = true;
+                    MinimizeToTray = true;
+                    ShowTrayIcon = true;
+                    TrayIconAppearance = "monochrome-light";
+                };
+
+                PasswordGenerator = {
+                    Length = 20;
+                };
+
+                Security = {
+                    ClearClipboard = false;
+                    IconDownloadFallback = true;
+                    LockDatabaseIdle = false;
+                };
+
+                FdoSecrets = {
+                    Enabled = true;
+                };
+            };
+        };
+
         eza = {
             enable = true;
             colors = "auto";
             enableFishIntegration = true;
             git = true;
-            icons = "auto";
+            icons = "never";
             theme = ''
                 colourful: true
 
@@ -261,94 +549,6 @@
                 update_ms = 1000;
                 custom_gpu_name0 = "RTX 4090";
             };
-
-            themes = {
-                catppuccin_mocha = ''
-                    # Main background, empty for terminal default, need to be empty if you want transparent background
-                    theme[main_bg]="#1E1E2E"
-
-                    # Main text color
-                    theme[main_fg]="#CDD6F4"
-
-                    # Title color for boxes
-                    theme[title]="#CDD6F4"
-
-                    # Highlight color for keyboard shortcuts
-                    theme[hi_fg]="#89B4FA"
-
-                    # Background color of selected item in processes box
-                    theme[selected_bg]="#45475A"
-
-                    # Foreground color of selected item in processes box
-                    theme[selected_fg]="#89B4FA"
-
-                    # Color of inactive/disabled text
-                    theme[inactive_fg]="#7F849C"
-
-                    # Color of text appearing on top of graphs, i.e uptime and current network graph scaling
-                    theme[graph_text]="#F5E0DC"
-
-                    # Background color of the percentage meters
-                    theme[meter_bg]="#45475A"
-
-                    # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-                    theme[proc_misc]="#F5E0DC"
-
-                    # CPU, Memory, Network, Proc box outline colors
-                    theme[cpu_box]="#cba6f7" #Mauve
-                    theme[mem_box]="#a6e3a1" #Green
-                    theme[net_box]="#eba0ac" #Maroon
-                    theme[proc_box]="#89b4fa" #Blue
-
-                    # Box divider line and small boxes line color
-                    theme[div_line]="#6C7086"
-
-                    # Temperature graph color (Green -> Yellow -> Red)
-                    theme[temp_start]="#a6e3a1"
-                    theme[temp_mid]="#f9e2af"
-                    theme[temp_end]="#f38ba8"
-
-                    # CPU graph colors (Teal -> Lavender)
-                    theme[cpu_start]="#94e2d5"
-                    theme[cpu_mid]="#74c7ec"
-                    theme[cpu_end]="#b4befe"
-
-                    # Mem/Disk free meter (Mauve -> Lavender -> Blue)
-                    theme[free_start]="#cba6f7"
-                    theme[free_mid]="#b4befe"
-                    theme[free_end]="#89b4fa"
-
-                    # Mem/Disk cached meter (Sapphire -> Lavender)
-                    theme[cached_start]="#74c7ec"
-                    theme[cached_mid]="#89b4fa"
-                    theme[cached_end]="#b4befe"
-
-                    # Mem/Disk available meter (Peach -> Red)
-                    theme[available_start]="#fab387"
-                    theme[available_mid]="#eba0ac"
-                    theme[available_end]="#f38ba8"
-
-                    # Mem/Disk used meter (Green -> Sky)
-                    theme[used_start]="#a6e3a1"
-                    theme[used_mid]="#94e2d5"
-                    theme[used_end]="#89dceb"
-
-                    # Download graph colors (Peach -> Red)
-                    theme[download_start]="#fab387"
-                    theme[download_mid]="#eba0ac"
-                    theme[download_end]="#f38ba8"
-
-                    # Upload graph colors (Green -> Sky)
-                    theme[upload_start]="#a6e3a1"
-                    theme[upload_mid]="#94e2d5"
-                    theme[upload_end]="#89dceb"
-
-                    # Process box color gradient for threads, mem and cpu usage (Sapphire -> Mauve)
-                    theme[process_start]="#74C7EC"
-                    theme[process_mid]="#89DCEB"
-                    theme[process_end]="#cba6f7"
-                '';
-            };
         };
 
         ghostty = {
@@ -356,13 +556,10 @@
             enableFishIntegration = true;
             package = config.lib.nixGL.wrap pkgs.ghostty;
             settings = {
-                font-size = 16;
-                font-family = "JetBrainsMono Nerd Font";
-                theme = "Catppuccin Mocha";
                 window-theme = "dark";
                 window-decoration = false;
-                window-padding-x = 10;
-                window-padding-y = 10;
+                window-padding-x = 5;
+                window-padding-y = 5;
                 confirm-close-surface = false;
                 initial-window = false;
                 shell-integration-features = "cursor,sudo,title,ssh-env,ssh-terminfo,path";
@@ -371,43 +568,14 @@
                 clipboard-read = "allow";
                 clipboard-write = "allow";
                 adjust-cell-width = "-7%";
-                font-thicken = true;
-                #clipboard-trim-trailing-spaces = true
                 working-directory = "home";
-                background-opacity = 1;
                 background-blur = true;
-            };
-            themes = {
-                catppuccin-mocha = {
-                    background = "1e1e2e";
-                    cursor-color = "f5e0dc";
-                    foreground = "cdd6f4";
-                    palette = [
-                        "0=#45475a"
-                        "1=#f38ba8"
-                        "2=#a6e3a1"
-                        "3=#f9e2af"
-                        "4=#89b4fa"
-                        "5=#f5c2e7"
-                        "6=#94e2d5"
-                        "7=#bac2de"
-                        "8=#585b70"
-                        "9=#f38ba8"
-                        "10=#a6e3a1"
-                        "11=#f9e2af"
-                        "12=#89b4fa"
-                        "13=#f5c2e7"
-                        "14=#94e2d5"
-                        "15=#a6adc8"
-                    ];
-                    selection-background = "353749";
-                    selection-foreground = "cdd6f4";
-                };
+                #font-family = "\"JetBrainsMono Nerd Font\"";
             };
         };
 
         starship = {
-            # "$schema" = "https://starship.rs/config-schema.json";
+            # "$schema" = "https://starshiprs/config-schema.json";
             enable = true;
             settings = lib.mkMerge [
                 (builtins.fromTOML (
@@ -423,8 +591,8 @@
                     os.disabled = lib.mkDefault true;
                     status = {
                         style = "";
-                        symbol = "[⨯](fg:red bg:lavender)";
-                        success_symbol = "[✓](fg:black bg:lavender)";
+                        symbol = "[⨯](bold fg:red bg:lavender)";
+                        success_symbol = "[✓](bold fg:black bg:lavender)";
                         format = "[$symbol$common_meaning$signal_name$maybe_int]($style)";
                         map_symbol = true;
                         disabled = false;
@@ -435,20 +603,20 @@
                     };
                     format = lib.mkForce (
                         lib.concatStrings [
-                            "[](red)"
+                            "[](bold red)"
                             "$os"
                             "$username"
-                            "[](bg:peach fg:red)"
+                            "[](bold bg:peach fg:red)"
                             "$directory"
-                            "[](bg:yellow fg:peach)"
+                            "[](bold bg:yellow fg:peach)"
                             "$git_branch"
                             "$git_status"
-                            "[](fg:yellow bg:green)"
+                            "[](bold fg:yellow bg:green)"
                             "$c$rust$golang$nodejs$php$haskell$python"
-                            "[](fg:sapphire bg:lavender)"
+                            "[](bold fg:sapphire bg:lavender)"
                             "$status"
                             "$time"
-                            "[ ](fg:lavender)"
+                            "[ ](bold fg:lavender)"
                             "$cmd_duration"
                             "$line_break"
                             "$character"
@@ -474,214 +642,6 @@
             enable = true;
             #            font = "JetBrainsMono Nerd Font 18";
             modes = [ "drun" ];
-            #theme =
-            #    let
-            #        inherit (config.lib.formats.rasi) mkLiteral;
-            #    in
-            #    {
-                    "*" = {
-                        rosewater = mkLiteral "#f5e0dc";
-                        flamingo = mkLiteral "#f2cdcd";
-                        pink = mkLiteral "#f5c2e7";
-                        mauve = mkLiteral "#cba6f7";
-                        red = mkLiteral "#f38ba8";
-                        maroon = mkLiteral "#eba0ac";
-                        peach = mkLiteral "#fab387";
-                        yellow = mkLiteral "#f9e2af";
-                        green = mkLiteral "#a6e3a1";
-                        teal = mkLiteral "#94e2d5";
-                        sky = mkLiteral "#89dceb";
-                        sapphire = mkLiteral "#74c7ec";
-                        blue = mkLiteral "#89b4fa";
-                        lavender = mkLiteral "#b4befe";
-                        text = mkLiteral "#cdd6f4";
-                        subtext1 = mkLiteral "#bac2de";
-                        subtext0 = mkLiteral "#a6adc8";
-                        overlay2 = mkLiteral "#9399b2";
-                        overlay1 = mkLiteral "#7f849c";
-                        overlay0 = mkLiteral "#6c7086";
-                        surface2 = mkLiteral "#585b70";
-                        surface1 = mkLiteral "#45475a";
-                        surface0 = mkLiteral "#313244";
-                        base = mkLiteral "#1e1e2e";
-                        mantle = mkLiteral "#181825";
-                        crust = mkLiteral "#11111b";
-                        selected-active-foreground = mkLiteral "@background";
-                        lightfg = mkLiteral "@text";
-                        separatorcolor = mkLiteral "@foreground";
-                        urgent-foreground = mkLiteral "@red";
-                        alternate-urgent-background = mkLiteral "@lightbg";
-                        lightbg = mkLiteral "@mantle";
-                        background-color = mkLiteral "transparent";
-                        border-color = mkLiteral "@foreground";
-                        normal-background = mkLiteral "@background";
-                        selected-urgent-background = mkLiteral "@red";
-                        alternate-active-background = mkLiteral "@lightbg";
-                        spacing = mkLiteral "2";
-                        alternate-normal-foreground = mkLiteral "@foreground";
-                        urgent-background = mkLiteral "@background";
-                        selected-normal-foreground = mkLiteral "@lightbg";
-                        active-foreground = mkLiteral "@blue";
-                        background = mkLiteral "@base";
-                        selected-active-background = mkLiteral "@blue";
-                        active-background = mkLiteral "@background";
-                        selected-normal-background = mkLiteral "@lightfg";
-                        alternate-normal-background = mkLiteral "@lightbg";
-                        foreground = mkLiteral "@text";
-                        selected-urgent-foreground = mkLiteral "@background";
-                        normal-foreground = mkLiteral "@foreground";
-                        alternate-urgent-foreground = mkLiteral "@red";
-                        alternate-active-foreground = mkLiteral "@blue";
-                    };
-
-                    element = {
-                        padding = mkLiteral "1px";
-                        cursor = mkLiteral "pointer";
-                        spacing = mkLiteral "5px";
-                        border = 0;
-                    };
-                    "element normal.normal" = {
-                        background-color = mkLiteral "@normal-background";
-                        text-color = mkLiteral "@normal-foreground";
-                    };
-                    "element normal.urgent" = {
-                        background-color = mkLiteral "@urgent-background";
-                        text-color = mkLiteral "@urgent-foreground";
-                    };
-                    "element normal.active" = {
-                        background-color = mkLiteral "@active-background";
-                        text-color = mkLiteral "@active-foreground";
-                    };
-                    "element selected.normal" = {
-                        background-color = mkLiteral "@selected-normal-background";
-                        text-color = mkLiteral "@selected-normal-foreground";
-                    };
-                    "element selected.urgent" = {
-                        background-color = mkLiteral "@selected-urgent-background";
-                        text-color = mkLiteral "@selected-urgent-foreground";
-                    };
-                    "element selected.active" = {
-                        background-color = mkLiteral "@selected-active-background";
-                        text-color = mkLiteral "@selected-active-foreground";
-                    };
-                    "element alternate.normal" = {
-                        background-color = mkLiteral "@alternate-normal-background";
-                        text-color = mkLiteral "@alternate-normal-foreground";
-                    };
-                    "element alternate.urgent" = {
-                        background-color = mkLiteral "@alternate-urgent-background";
-                        text-color = mkLiteral "@alternate-urgent-foreground";
-                    };
-                    "element alternate.active" = {
-                        background-color = mkLiteral "@alternate-active-background";
-                        text-color = mkLiteral "@alternate-active-foreground";
-                    };
-                    "element-text" = {
-                        background-color = mkLiteral "transparent";
-                        cursor = mkLiteral "inherit";
-                        highlight = mkLiteral "inherit";
-                        text-color = mkLiteral "inherit";
-                    };
-                    "element-icon" = {
-                        background-color = mkLiteral "transparent";
-                        size = mkLiteral "1.0000em";
-                        cursor = mkLiteral "inherit";
-                        text-color = mkLiteral "inherit";
-                    };
-                    window = {
-                        padding = 5;
-                        background-color = mkLiteral "@background";
-                        border = 1;
-                    };
-                    mainbox = {
-                        padding = 0;
-                        border = 0;
-                    };
-                    message = {
-                        padding = mkLiteral "1px";
-                        border-color = mkLiteral "@separatorcolor";
-                        border = mkLiteral "2px dash 0px 0px";
-                    };
-                    textbox = {
-                        text-color = mkLiteral "@foreground";
-                    };
-                    listview = {
-                        padding = mkLiteral "2px 0px 0px";
-                        scrollbar = true;
-                        border-color = mkLiteral "@separatorcolor";
-                        spacing = mkLiteral "2px";
-                        fixed-height = 0;
-                        border = mkLiteral "2px dash 0px 0px";
-                    };
-                    scrollbar = {
-                        width = mkLiteral "4px";
-                        padding = 0;
-                        handle-width = mkLiteral "8px";
-                        border = 0;
-                        handle-color = mkLiteral "@normal-foreground";
-                    };
-                    sidebar = {
-                        border-color = mkLiteral "@separatorcolor";
-                        border = mkLiteral "2px dash 0px 0px";
-                    };
-                    button = {
-                        cursor = mkLiteral "pointer";
-                        spacing = 0;
-                        text-color = mkLiteral "@normal-foreground";
-                    };
-                    "button selected" = {
-                        background-color = mkLiteral "@selected-normal-background";
-                        text-color = mkLiteral "@selected-normal-foreground";
-                    };
-                    "num-filtered-rows" = {
-                        expand = false;
-                        text-color = mkLiteral "Gray";
-                    };
-                    "num-rows" = {
-                        expand = false;
-                        text-color = mkLiteral "Gray";
-                    };
-                    "textbox-num-sep" = {
-                        expand = false;
-                        str = "/";
-                        text-color = mkLiteral "Gray";
-                    };
-                    "#inputbar" = {
-                        padding = mkLiteral "1px";
-                        spacing = mkLiteral "0px";
-                        text-color = mkLiteral "@normal-foreground";
-                        children = map mkLiteral [
-                            "prompt"
-                            "textbox-prompt-colon"
-                            "entry"
-                            "num-filtered-rows"
-                            "textbox-num-sep"
-                            "num-rows"
-                            "case-indicator"
-                        ];
-                    };
-                    "case-indicator" = {
-                        spacing = 0;
-                        text-color = mkLiteral "@normal-foreground";
-                    };
-                    "entry" = {
-                        text-color = mkLiteral "@normal-foreground";
-                        cursor = mkLiteral "text";
-                        spacing = 0;
-                        placeholder-color = mkLiteral "Gray";
-                        placeholder = "Type to filter";
-                    };
-                    "prompt" = {
-                        spacing = 0;
-                        text-color = mkLiteral "@normal-foreground";
-                    };
-                    "textbox-prompt-colon" = {
-                        margin = mkLiteral "0px 0.3000em 0.0000em 0.0000em";
-                        expand = false;
-                        str = ":";
-                        text-color = mkLiteral "inherit";
-                    };
-                };
         };
         uv.enable = true;
         sqls.enable = true;
@@ -694,9 +654,6 @@
         };
         zellij = {
             enable = true;
-            settings = {
-                theme = "catppuccin-mocha";
-            };
         };
         waybar = {
             enable = true;
@@ -708,11 +665,11 @@
                     position = "bottom";
                     height = 32; # Waybar height (to be removed for auto height)
                     #width = 1280; # Waybar width
-                    "spacing" = 2; # Gaps between modules (4px)
+                    spacing = 2; # Gaps between modules (4px)
                     # Choose the order of the modules
-                    "modules-left" = [ "mpd" ];
-                    "modules-center" = [ ];
-                    "modules-right" = [
+                    modules-left = [ "mpd" ];
+                    modules-center = [ "clock" ];
+                    modules-right = [
                         "systemd-failed-units"
                         "custom/weather"
                         "cpu"
@@ -783,7 +740,7 @@
                         "unknown-tag" = "N/A";
                         "interval" = 2;
                         "on-click" = "ghostty -e rmpc";
-                        "max-length" = 100;
+                        #"max-length" = 100;
                         "consume-icons" = {
                             "on" = " ";
                         };
@@ -1086,13 +1043,14 @@
                     theme: Some("cat"),
                     cache_dir: "~/.cache/rmpc",
                     lyrics_dir: "/mnt/storage/music",
-                    on_song_change: ["~/.config/rmpc/notify", "~/.config/rmpc/increment_play_count"],
+                    on_song_change: ["/home/leigh/.config/rmpc/notify.sh", "/home/leigh/.config/rmpc/increment_play_count"],
                     volume_step: 5,
-                    max_fps: 30,
+                    max_fps: 120,
                     scrolloff: 0,
                     wrap_navigation: false,
                     enable_mouse: true,
                     enable_config_hot_reload: true,
+                    enable_lyrics_hot_reload: true,
                     status_update_interval_ms: 1000,
                     rewind_to_start_sec: None,
                     keep_state_on_song_change: true,
@@ -1101,6 +1059,7 @@
                     ignore_leading_the: false,
                     browser_song_sort: [Disc, Track, Artist, Title],
                     directories_sort: SortFormat(group_by_type: true, reverse: false),
+
                     album_art: (
                         method: Auto,
                         max_size_px: (width: 1200, height: 1200),
@@ -1116,13 +1075,16 @@
                             ".":       VolumeUp,
                             "<Tab>":   NextTab,
                             "<S-Tab>": PreviousTab,
-                            "1":       SwitchToTab("Queue"),
+                            "1":       SwitchToTab("Home"),
                             "2":       SwitchToTab("Directories"),
-                            "3":       SwitchToTab("Artists"),
-                            "4":       SwitchToTab("Album Artists"),
+                            "3":       SwitchToTab("Playlists"),
+                            "4":       SwitchToTab("Artists"),
                             "5":       SwitchToTab("Albums"),
-                            "6":       SwitchToTab("Playlists"),
-                            "7":       SwitchToTab("Search"),
+                            "6":       SwitchToTab("Album Artists"),
+                            "7":       SwitchToTab("Genre"),
+                            "8":       SwitchToTab("Queue"),
+                            "9":       SwitchToTab("Show"),
+                            "0":       SwitchToTab("Search"),
                             "q":       Quit,
                             ">":       NextTrack,
                             "p":       TogglePause,
@@ -1142,6 +1104,8 @@
                             "R":       AddRandom,
                         },
                         navigation: {
+                            "<PageUp>":    PageUp,
+                            "<PageDown>":  PageDown,
                             "k":         Up,
                             "j":         Down,
                             "h":         Left,
@@ -1189,7 +1153,7 @@
                     ),
                     search: (
                         case_sensitive: false,
-                        ignore_diacritics: false,
+                        ignore_diacritics: true,
                         search_button: false,
                         mode: Contains,
                         tags: [
@@ -1210,12 +1174,12 @@
                     tabs: [
                         (name: "Home", pane: Split(direction: Horizontal, panes: [
                                     (size: "70%", borders: "NONE", pane: Split(direction: Vertical,panes: [
-                                                (size: "3", borders: "ALL", pane: Component("custom_song_table_header")),
-                                                (size: "100%", borders: "ALL", pane: Pane(Queue)),
+                                                (size: "3", borders: "NONE", pane: Component("custom_song_table_header")),
+                                                (size: "100%", borders: "NONE", pane: Pane(Queue)),
                                             ])
                                     ),
                                     (size: "30%", borders: "NONE", pane: Split(direction: Vertical, panes: [
-                                                (size: "0.45r", borders: "ALL", pane: Pane(AlbumArt)),
+                                                (size: "0.45r", borders: "NONE", pane: Pane(AlbumArt)),
                                                 (size: "100%", borders: "NONE", pane: Pane(Lyrics)),
                                             ])
                                     ),
@@ -1250,13 +1214,13 @@
                                 ])
                         ),
                         (name: "Show",pane: Split(direction: Vertical, panes: [
-                                    (size: "50%", pane: Split(direction: Horizontal, panes: [
-                                                (size: "22%", borders: "ALL", pane: Pane(Queue)),
-                                                (size: "56%", borders: "ALL", pane: Pane(Lyrics)),
-                                                (size: "22%", borders: "ALL", pane: Pane(AlbumArt)),
+                                    (size: "75%", pane: Split(direction: Horizontal, panes: [
+                                                (size: "25%", borders: "NONE", pane: Pane(Queue)),
+                                                (size: "50%", borders: "NONE", pane: Pane(Lyrics)),
+                                                (size: "25%", borders: "NONE", pane: Pane(AlbumArt)),
                                             ])
                                     ),
-                                    (size: "50%", borders: "ALL", pane: Pane(Cava)),
+                                    (size: "25%", borders: "NONE", pane: Pane(Cava)),
                                 ])
                         ),
                         (name: "Search", pane: Split(direction: Horizontal, panes: [
@@ -1275,7 +1239,7 @@
                             source: "/tmp/mpd.fifo",
                             sample_rate: 44100,
                             channels: 2,
-                            sample_bits: 16,
+                            sample_bits: 24,
                         ),
                         smoothing: (
                             noise_reduction: 77, // default 77
@@ -1288,6 +1252,19 @@
                     ),
                 )
             '';
+        };
+        bat = {
+            themes = {
+                catppuccin = {
+                    src = pkgs.fetchFromGitHub {
+                        owner = "catppuccin";
+                        repo = "bat"; # Bat uses sublime syntax for its themes
+                        rev = "26c57ec282abcaa76e57e055f38432bd827ac34e";
+                        sha256 = "6810349b28055dce54076712fc05fc68da4b8ec0";
+                    };
+                    file = "Dracula.tmTheme";
+                };
+            };
         };
 
     };
@@ -1306,6 +1283,13 @@
     };
 
     services = {
+        flameshot = {
+            settings = {
+                General = {
+                    useGrimAdapter = true;
+                };
+            };
+        };
         mpd = {
             enable = true;
             network.startWhenNeeded = false;
@@ -1327,7 +1311,7 @@
                     type            "fifo"
                     name            "Visualizer feed"
                     path            "/tmp/mpd.fifo"
-                    format          "44100:16:2"
+                    format          "44100:24:2"
                 }
                 replaygain                      "auto"
                 filesystem_charset              "UTF-8"
